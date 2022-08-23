@@ -1,4 +1,4 @@
-package kr.dragon.dreaming.studyandroid
+package kr.dragon.dreaming.helloworld
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
