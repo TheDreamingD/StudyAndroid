@@ -294,11 +294,11 @@
 
 # ------- Ignore list -------
 
-.DS_Store
 local.properties
 .gradle/
 build/
 .idea/
+/*/**/.gitignore
 
 
 
