@@ -296,7 +296,6 @@
 
 local.properties
 .gradle/
-build/
 .idea/
 /*/**/.gitignore
 
