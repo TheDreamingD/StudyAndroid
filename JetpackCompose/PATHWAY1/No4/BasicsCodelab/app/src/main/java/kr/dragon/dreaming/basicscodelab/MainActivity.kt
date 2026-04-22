@@ -38,7 +38,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
     )
 }
 
-@Preview(showBackground = true, name = "Text proview")
+@Preview(showBackground = true, name = "Text preview")
 @Composable
 fun GreetingPreview() {
     BasicsCodelabTheme {
