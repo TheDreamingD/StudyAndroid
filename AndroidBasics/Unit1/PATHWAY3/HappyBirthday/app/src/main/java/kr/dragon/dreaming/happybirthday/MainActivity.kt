@@ -20,6 +20,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -37,8 +38,8 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     GreetingImage(
-                        message = "Happy Birthday Sam!",
-                        from = "From Emma"
+                        message = stringResource(R.string.happy_birthday_text), // 전구 누르고 extract resource 해서 텍스트를 파일로 변경
+                        from = stringResource(R.string.signature_text)
                     )
                 }
             }
@@ -70,7 +71,7 @@ fun GreetingText(message: String, from: String, modifier: Modifier = Modifier) {
 
 @Composable
 fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.androidparty) // 리소스 매니저를 통해 이미지를 임포트함, 그냥 파일 복사해서 사용했었는데 이렇게 하는게 더 안정적인듯함
+    val image = painterResource(R.drawable.androidparty) // 도구의 리소스 매니저를 통해 이미지를 임포트함, 그냥 파일 복사해서 사용했었는데 이렇게 하는게 더 안정적인듯함
     Box(modifier) {
         Image(
             painter = image,
@@ -80,7 +81,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
         )
         GreetingText(message = message,
             from = from,
-            modifier = Modifier.fillMaxSize().padding(8.dp))
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(8.dp))
     }
 }
 
@@ -88,6 +91,9 @@ fun GreetingImage(message: String, from: String, modifier: Modifier = Modifier) 
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        GreetingImage(message = "Happy Birthday Sam!", from = "From Emma")
+        GreetingImage(
+            message = stringResource(R.string.happy_birthday_text), // 전구 누르고 extract resource 해서 텍스트를 파일로 변경
+            from = stringResource(R.string.signature_text)
+        )
     }
 }
