@@ -82,6 +82,7 @@ fun TipTimeLayout() {
         )
         EditNumberField(Modifier.padding(bottom = 32.dp).fillMaxWidth())
         Text(
+            // EditNumberField에 있는 값을 여기에 입력해야하기 떄문에 현재 상태로는 안되고 상태 호이스팅을 해야 한다.
             text = stringResource(R.string.tip_amount, "$0.00"),
             style = MaterialTheme.typography.displaySmall
         )
