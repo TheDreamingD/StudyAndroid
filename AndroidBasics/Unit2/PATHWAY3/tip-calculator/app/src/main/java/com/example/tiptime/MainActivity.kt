@@ -66,6 +66,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun TipTimeLayout() {
+    // 상태 호이스팅을 위해 EditNumberField에 있던 값을 여기로 옮겨옴
+    var amountInput by remember { mutableStateOf("") }
+    val amount = amountInput.toDoubleOrNull() ?: 0.0
+    val tip = calculateTip(amount)
+
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -80,25 +85,28 @@ fun TipTimeLayout() {
                 .padding(bottom = 16.dp, top = 40.dp)
                 .align(alignment = Alignment.Start)
         )
-        EditNumberField(Modifier.padding(bottom = 32.dp).fillMaxWidth())
+        EditNumberField(
+            value = amountInput,
+            onValueChange = { amountInput = it },
+            Modifier.padding(bottom = 32.dp).fillMaxWidth())
         Text(
-            // EditNumberField에 있는 값을 여기에 입력해야하기 떄문에 현재 상태로는 안되고 상태 호이스팅을 해야 한다.
-            text = stringResource(R.string.tip_amount, "$0.00"),
+            text = stringResource(R.string.tip_amount, tip),
             style = MaterialTheme.typography.displaySmall
         )
         Spacer(modifier = Modifier.height(150.dp))
     }
 }
 
+// 상태 호이스팅을 통해서 이 함수는 stateless가 되었다.
 @Composable
-fun EditNumberField(modifier: Modifier = Modifier) {
-    var amountInput by remember { mutableStateOf("") }
-    val amount = amountInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(amount)
+fun EditNumberField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier) {
 
     TextField(
-        value = amountInput,
-        onValueChange = { amountInput = it },
+        value = value,
+        onValueChange = onValueChange,
         label = { Text(stringResource(R.string.bill_amount)) },
         singleLine = true,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
