@@ -31,10 +31,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -84,7 +87,8 @@ fun DogItem(
     dog: Dog,
     modifier: Modifier = Modifier
 ) {
-    Card(modifier = modifier) {
+    // card는 이미 중형 도형을 사용하고 있어서 따로 shape을 지정해줄 필요가 없다.
+    Card(modifier = modifier) { // card는 단일 컴포저블을 포함할 수 있고 장식 옵션을 추가하는 영역이다.
         Row(
             modifier = Modifier
                 .fillMaxWidth()
@@ -110,7 +114,9 @@ fun DogIcon(
     Image(
         modifier = modifier
             .size(dimensionResource(R.dimen.image_size))
-            .padding(dimensionResource(R.dimen.padding_small)),
+            .padding(dimensionResource(R.dimen.padding_small))
+            .clip(MaterialTheme.shapes.small), // 이미지를 원으로 만든다. Shape.kt에서 정한 도형
+        contentScale = ContentScale.Crop, // 이미지가 작아서 원으로 안만들어지는 이미지들을 원으로 만들어줌
         painter = painterResource(dogIcon),
 
         // Content Description is not needed here - image is decorative, and setting a null content

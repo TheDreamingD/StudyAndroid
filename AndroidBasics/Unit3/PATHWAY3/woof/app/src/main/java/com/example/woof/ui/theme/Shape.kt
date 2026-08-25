@@ -19,6 +19,9 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Shapes
 import androidx.compose.ui.unit.dp
 
+// 도형의 모양을 정해주는 값이다.
+// 소형, 중형, 대형 세가지 타입이 있다.
 val Shapes = Shapes(
     small = RoundedCornerShape(50.dp),
+    medium = RoundedCornerShape(topEnd = 16.dp, bottomStart = 16.dp)
 )
