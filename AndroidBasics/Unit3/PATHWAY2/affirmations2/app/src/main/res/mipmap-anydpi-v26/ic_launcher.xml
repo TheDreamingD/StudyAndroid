@@ -1,9 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 mipmap 폴더는 앱 아이콘을 저장하는 디렉토리라고 보면 된다.
 v26으로 끝나는 디렉토리는 안드로이드 26 버전 이후 적응형 아이콘을 사용할수있는 디렉토리다.
 안드로이드25 이전버전은 각 해상도별로 이미지를 만들어서 사용해야 한다.
 -->
-<?xml version="1.0" encoding="utf-8"?>
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
     <background android:drawable="@drawable/ic_launcher_background"/>
     <foreground android:drawable="@drawable/ic_launcher_foreground"/>
