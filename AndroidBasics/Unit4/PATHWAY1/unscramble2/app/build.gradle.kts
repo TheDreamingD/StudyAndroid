@@ -64,7 +64,7 @@ android {
 }
 
 dependencies {
-    implementation(platform("androidx.compose:compose-bom:2023.08.00"))
+    implementation(platform("androidx.compose:compose-bom:2023.08.00")) // 컴포즈 라이브러리 버전을 관리해준다.
     implementation("androidx.activity:activity-compose:1.8.0")
     implementation("androidx.compose.material3:material3")
     implementation("androidx.compose.ui:ui")
@@ -76,4 +76,8 @@ dependencies {
 
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    testImplementation("junit:junit:4.13.2") // 테스트를 위해서만 사용하고 실제 apk는 포함되지 않음
+    androidTestImplementation(platform("androidx.compose:compose-bom:2023.06.01"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 }
