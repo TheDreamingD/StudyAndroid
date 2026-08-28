@@ -76,3 +76,24 @@ fun ReplyAppCompactPreview() {
         }
     }
 }
+
+// 어노테이션에 width 정해주고 코드에서 windowSize 정해주면 여러 화면 크기의 preview를 볼 수 있다.
+@Preview(showBackground = true, widthDp = 700)
+@Composable
+fun ReplyAppMediumPreview() {
+    ReplyTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Medium)
+        }
+    }
+}
+
+@Preview(showBackground = true, widthDp = 1000)
+@Composable
+fun ReplyAppExpandedPreview() {
+    ReplyTheme {
+        Surface {
+            ReplyApp(windowSize = WindowWidthSizeClass.Expanded)
+        }
+    }
+}
