@@ -136,6 +136,7 @@ fun ReplyHomeScreen(
             ReplyDetailsScreen(
                 replyUiState = replyUiState,
                 onBackPressed = onDetailScreenBackPressed,
+                isFullScreen = true,
                 modifier = modifier
             )
         }

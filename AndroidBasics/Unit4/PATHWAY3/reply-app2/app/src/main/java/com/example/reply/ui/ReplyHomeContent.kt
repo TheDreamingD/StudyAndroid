@@ -119,7 +119,7 @@ fun ReplyListAndDetailContent(
             modifier = Modifier
                 .padding(top = dimensionResource(R.dimen.email_list_item_vertical_spacing))
                 .weight(1f),
-            onBackPressed = {}
+            onBackPressed = { activity.finish() } // 큰 화면에서는 뒤로가기를 누르면 홈으로 가는게 아니고 앱을 종료한다.
         )
     }
 }
