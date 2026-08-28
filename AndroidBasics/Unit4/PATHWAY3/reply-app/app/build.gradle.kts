@@ -84,4 +84,6 @@ dependencies {
 
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     debugImplementation("androidx.compose.ui:ui-tooling")
+
+    implementation("androidx.compose.material3:material3-window-size-class") // 다양한 화면 크기를 지원하기 위한 라이브러리
 }
