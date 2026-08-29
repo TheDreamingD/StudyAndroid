@@ -52,6 +52,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.racetracker.R
 import com.example.racetracker.ui.theme.RaceTrackerTheme
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
@@ -76,8 +77,10 @@ fun RaceTrackerApp() {
             playerOne,
             playerTwo
         ) { // playerOne 또는 playerTwo가 새 인스턴스로 교체되면 코루틴을 취소하고 다시 실행해야 하므로 두 변수를 키로 추가한다.
-            launch { playerOne.run() } // launch가 없으면 playerOne이 끝나고 playerTwo가 시작됨
-            launch { playerTwo.run() } // 이렇게 하면 launch는 함수가 끝나는걸 기다리지 않고 바로 반환하기 떄문에 정상동작하지 않는다.
+            coroutineScope { // 이렇게 scope로 묶어줘야 안에 함수들이 모두 종료되면 다음으로 넘어간다.
+                launch { playerOne.run() } // launch가 없으면 playerOne이 끝나고 playerTwo가 시작됨
+                launch { playerTwo.run() } // 이렇게 하면 launch는 함수가 끝나는걸 기다리지 않고 바로 반환하기 떄문에 정상동작하지 않는다.
+            }
             raceInProgress = false
         }
     }
