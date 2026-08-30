@@ -14,7 +14,7 @@ private val retrofit = Retrofit.Builder()
 
 interface MarsApiService {
     @GET("photos") // retrofit에 이 함수가 get 요청임을 알림, photos는 웹 서비스 메서드의 엔드포인드(url 뒤에 붙는 주소)
-    suspend fun getPhotos() // 정지함수로 만든다.
+    suspend fun getPhotos(): String // 정지함수로 만든다.
 }
 
 object MarsApi {
