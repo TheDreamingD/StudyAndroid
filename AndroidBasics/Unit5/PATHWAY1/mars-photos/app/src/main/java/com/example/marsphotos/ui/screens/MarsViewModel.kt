@@ -50,7 +50,7 @@ class MarsViewModel : ViewModel() {
         viewModelScope.launch { // viewmodel이 삭제되면 코루틴이 멈춘다.
             marsUiState = try {
                 val listResult = MarsApi.retrofitService.getPhotos()
-                MarsUiState.Success(listResult)
+                MarsUiState.Success("Success: ${listResult.size} Mars photos retrieved")
             } catch (e: IOException) {
                 MarsUiState.Error
             }
